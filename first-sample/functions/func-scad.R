@@ -13,6 +13,9 @@ runscad=function(Y,indice,lag,alpha=1){
     X.out=tail(X.out,1)[1:ncol(X)]
   }
   
+  y = y[1:(length(y)-lag+1)]
+  X = X[1:(nrow(X)-lag+1),]
+  
   model=ic.ncvreg(X,y,penalty = "SCAD")
   coef=model$coef
   

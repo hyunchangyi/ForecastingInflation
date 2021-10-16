@@ -12,6 +12,8 @@ runxgb=function(Y,indice,lag){
     X.out=aux[,-c(1:(ncol(Y2)*(lag-1)))]
     X.out=tail(X.out,1)[1:ncol(X)]
   }
+  y = y[1:(length(y)-lag+1)]
+  X = X[1:(nrow(X)-lag+1),]
   
   model = xgboost(X,label = y,nrounds = 1000, verbose = FALSE,
                   params=list(eta=0.05,nthread=1,colsample_bylevel=2/3,subsample=1,max_depth=4,min_child_weigth=nrow(X)/200))

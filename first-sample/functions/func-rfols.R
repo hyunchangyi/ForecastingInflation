@@ -13,6 +13,9 @@ runrfols=function(Y,indice,lag){
     X.out=tail(X.out,1)[1:ncol(X)]
   }
   
+  y = y[1:(length(y)-lag+1)]
+  X = X[1:(nrow(X)-lag+1),]
+  
   model=randomForest(X,y,keep.inbag = TRUE,maxnodes = 25,ntree=500)
   samples=model$inbag
   

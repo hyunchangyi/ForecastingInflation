@@ -14,6 +14,9 @@ runlasso=function(Y,indice,lag,alpha=1,type="lasso"){
     X.out=tail(X.out,1)[1:ncol(X)]
   }
   
+  y = y[1:(length(y)-lag+1)]
+  X = X[1:(nrow(X)-lag+1),]
+  
   v = 1
   z = ncol(X)/4
   comb1 = matrix(NA,nrow(X),(z^2)*4)

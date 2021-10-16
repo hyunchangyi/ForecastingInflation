@@ -3,6 +3,8 @@ run.tfact=function(Y,indice,lag){
   
   y=Y[,indice]
   X=Y[,-indice]
+  y = y[1:(length(y)-lag+1)]
+  X = X[1:(nrow(X)-lag+1),]
   mat=cbind(embed(y,5),tail(X,nrow(X)-4))
   
   pretest=baggit(mat,pre.testing="individual",fixed.controls = 1:4)[-c(1:5)]

@@ -5,6 +5,9 @@ runjn=function(Y,indice,lag){
   y=aux[,indice]
   X=aux[,-c(1:(ncol(Y2)*lag))]  
   
+  y = y[1:(length(y)-lag+1)]
+  X = X[1:(nrow(X)-lag+1),]
+  
   i1=seq(1,ncol(X),ncol(Y)+4)
   i2=seq(ncol(Y)+4,ncol(X),ncol(Y)+4)
   
@@ -14,7 +17,7 @@ runjn=function(Y,indice,lag){
   }
   
   X=auxX
-  
+
   X.out=list()
   if(lag==1){
     for(i in 1:4){
