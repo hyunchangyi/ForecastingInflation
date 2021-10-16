@@ -1,7 +1,8 @@
 
 runcsr=function(Y,indice,lag){
   
-  dum=Y[,ncol(Y)]
+  
+  dum=Y[1:(nrow(y)-lag+1),ncol(Y)]
   Y=Y[,-ncol(Y)]
   
   comp=princomp(scale(Y,scale=FALSE))
@@ -18,7 +19,8 @@ runcsr=function(Y,indice,lag){
     X.out=aux[,-c(1:(ncol(Y2)*(lag-1)))]
     X.out=tail(X.out,1)[1:ncol(X)]
   }
-  
+  y = y[1:(length(y)-lag+1)]
+  X = X[1:(nrow(X)-lag+1),]
   dum=tail(dum,length(y))
   
   X2=cbind(X,dum)

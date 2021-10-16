@@ -1,6 +1,6 @@
 runlasso=function(Y,indice,lag,alpha=1,type="lasso"){
   
-  dum=Y[,ncol(Y)]
+  dum=Y[1:(nrow(y)-lag+1),ncol(Y)]
   Y=Y[,-ncol(Y)]
   comp=princomp(scale(Y,scale=FALSE))
   Y2=cbind(Y,comp$scores[,1:4])
@@ -14,6 +14,10 @@ runlasso=function(Y,indice,lag,alpha=1,type="lasso"){
     X.out=aux[,-c(1:(ncol(Y2)*(lag-1)))]
     X.out=tail(X.out,1)[1:ncol(X)]
   }
+  
+  y = y[1:(length(y)-lag+1)]
+  X = X[1:(nrow(X)-lag+1),]
+  
   dum=tail(dum,length(y))
   if(type=="quant" || type=="quantadalasso"){
     model=model=bicqlasso(cbind(X,dum),y,alpha = alpha)

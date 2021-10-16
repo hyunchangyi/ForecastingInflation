@@ -1,11 +1,13 @@
 
 run.tfact=function(Y,indice,lag){
   
-  dum=Y[,ncol(Y)]
+  dum=Y[1:(nrow(y)-lag+1),ncol(Y)]
   Y=Y[,-ncol(Y)]
   
   y=Y[,indice]
   X=Y[,-indice]
+  y = y[1:(length(y)-lag+1)]
+  X = X[1:(nrow(X)-lag+1),]
   mat=cbind(embed(y,5),tail(X,nrow(X)-4))
   mat=cbind(mat,tail(dum,nrow(mat)))
   
