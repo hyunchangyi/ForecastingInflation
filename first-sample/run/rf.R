@@ -1,7 +1,7 @@
-source("modelfunctions/func-rf.R")
-library(HDeconometricsBeta)
+source("functions/func-rf.R")
+library(HDeconometrics)
 library(randomForest)
-load("dados/rawdata2000.rda")
+load("rawdata.rda")
 Y=dados
 
 nprev=132
