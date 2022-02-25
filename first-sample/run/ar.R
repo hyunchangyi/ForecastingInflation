@@ -1,5 +1,5 @@
 source("functions/func-ar.R")
-library(HDeconometricsBeta)
+library(HDeconometrics)
 load("rawdata.rda")
 Y=dados
 

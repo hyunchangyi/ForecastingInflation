@@ -1,6 +1,6 @@
-source("modelfunctions/func-lasso.R")
+source("functions/func-lasso.R")
 library(HDeconometrics)
-load("dados/rawdata2000.rda")
+load("rawdata.rda")
 Y=dados
 
 nprev=132
